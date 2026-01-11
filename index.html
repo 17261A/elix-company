@@ -4,183 +4,211 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elix Company</title>
+
   <style>
-    /* Estilos básicos y reset */
-    body, h1, h2, h3, p, a, button {
+    :root {
+      --bg-dark: #0f1115;
+      --bg-card: #171a21;
+      --primary: #6c63ff;
+      --secondary: #8e54e9;
+      --text: #eaeaea;
+      --muted: #a0a0a0;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
     }
+
     body {
-      background-color: #f5f5f5;
-      color: #333;
+      background: linear-gradient(180deg, #0f1115, #121420);
+      color: var(--text);
       line-height: 1.6;
     }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    section {
+      padding: 70px 20px;
+    }
+
     .container {
-      max-width: 1024px;
-      margin: 0 auto;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin: auto;
     }
-    header.hero {
-      background: linear-gradient(135deg, #141e30, #243b55);
-      color: #fff;
+
+    /* HERO + CTA */
+    .hero {
       text-align: center;
-      padding: 60px 0;
+      padding: 90px 20px;
+      background: linear-gradient(135deg, #14162a, #1b1e3c);
     }
-    header.hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    .btn {
-      display: inline-block;
-      background: linear-gradient(45deg, #6C63FF, #8E54E9);
-      color: #fff;
-      padding: 12px 25px;
-      text-decoration: none;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(45deg, #8E54E9, #6C63FF);
-    }
-    section.compras {
-      background: #fff;
-      padding: 40px 0;
-    }
-    .compras h2 {
+
+    .hero h1 {
+      font-size: 2.8rem;
       margin-bottom: 15px;
-      color: #141e30;
     }
-    .trust-indicator {
-      background: #eef1f5;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    .trust-indicator p {
-      margin: 0;
-    }
-    .terms-warning {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    .terms-warning a {
-      color: #6C63FF;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .terms-warning a:hover {
-      text-decoration: underline;
-    }
-    section.minecraft {
-      background: #f9f9f9;
-      padding: 40px 0;
-    }
-    section.minecraft h2 {
-      text-align: center;
+
+    .hero p {
+      color: var(--muted);
       margin-bottom: 30px;
-      color: #141e30;
     }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+
+    .btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .feature {
-      flex: 1 1 30%;
-      background: #fff;
-      padding: 20px;
-      margin: 10px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(108,99,255,0.4);
+    }
+
+    /* SECCIONES */
+    h2 {
       text-align: center;
+      margin-bottom: 40px;
     }
-    .feature h3 {
-      margin-bottom: 10px;
-      color: #6C63FF;
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: transform 0.2s ease;
     }
-    .feature p {
-      color: #666;
+
+    .card:hover {
+      transform: translateY(-4px);
     }
-    @media (max-width: 768px) {
-      .features {
-        flex-direction: column;
-      }
-      .feature {
-        margin: 10px auto;
-      }
+
+    /* COMPRAS */
+    .price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 10px 0;
     }
-    /* Botón flotante Discord */
+
+    .trust {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* FAQ */
+    .faq p {
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* BOTÓN FLOTANTE DISCORD */
     .discord-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background: #5865F2;
-      color: #fff;
-      width: 50px;
-      height: 50px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      text-decoration: none;
-      transition: transform 0.2s;
+      font-size: 26px;
+      color: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease;
+      z-index: 999;
     }
+
     .discord-float:hover {
-      transform: translateY(-3px);
-    }
-    .discord-float svg {
-      width: 26px;
-      height: 26px;
-      fill: white;
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- Sección CTA principal -->
-  <header class="hero">
+  <!-- HERO / CTA -->
+  <section class="hero">
     <div class="container">
-      <h1>Bienvenido a Elix Company</h1>
-      <a href="https://discord.gg/fUXbmXcvNT" target="_blank" class="btn">Únete a Elix Company</a>
-    </div>
-  </header>
-
-  <!-- Sección de Compras / Producto -->
-  <section class="compras">
-    <div class="container">
-      <h2>Compra Nuestro Producto</h2>
-      <div class="trust-indicator">
-        <p>🔒 Pagos seguros vía Discord · ⚡ Entrega inmediata · 🎮 Comunidad activa</p>
-      </div>
-      <!-- Ejemplo de botón de compra -->
-      <p><button class="btn">Comprar Ahora</button></p>
-      <p class="terms-warning">Antes de comprar, asegúrate de leer nuestros <a href="#">Términos y Condiciones</a>.</p>
+      <h1>Elix Company</h1>
+      <p>Creando experiencias en Roblox y Minecraft</p>
+      <a class="btn" href="https://discord.gg/fUXbmXcvNT" target="_blank">
+        Únete a Elix Company
+      </a>
     </div>
   </section>
 
-  <!-- Nueva sección "Minecraft" -->
-  <section class="minecraft">
+  <!-- QUIÉNES SOMOS -->
+  <section>
+    <div class="container">
+      <h2>¿Quiénes somos?</h2>
+      <div class="card">
+        <p>
+          Elix Company es una compañía de videojuegos enfocada en Roblox y Minecraft.
+          Buscamos crecer poco a poco, creando juegos y experiencias de calidad para entretener
+          a nuestra comunidad.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPRAS -->
+  <section>
+    <div class="container">
+      <h2>Compras</h2>
+
+      <div class="card">
+        <h3>💎 Premium</h3>
+        <p class="price">$3 USD / R$ 250</p>
+        <p class="trust">🔒 Pagos vía Discord · ⚡ Entrega inmediata · 🎮 Comunidad activa</p>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:10px;">
+          Antes de comprar, asegúrate de leer nuestros Términos y Condiciones.
+        </p>
+        <a class="btn" href="https://discord.gg/fUXbmXcvNT" target="_blank">
+          Comprar (Abrir ticket)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINECRAFT -->
+  <section>
     <div class="container">
       <h2>Minecraft</h2>
-      <div class="features">
-        <div class="feature">
+      <div class="grid">
+        <div class="card">
           <h3>Rangos</h3>
           <p>Próximamente...</p>
         </div>
-        <div class="feature">
+        <div class="card">
           <h3>Kits</h3>
           <p>Próximamente...</p>
         </div>
-        <div class="feature">
+        <div class="card">
           <h3>Ítems</h3>
           <p>Próximamente...</p>
         </div>
@@ -188,12 +216,32 @@
     </div>
   </section>
 
-  <!-- Botón flotante de Discord -->
-  <a href="https://discord.gg/fUXbmXcvNT" target="_blank" class="discord-float" aria-label="Discord">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-      <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
-    </svg>
-  </a>
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="card faq">
+        <strong>¿Cómo compro Premium?</strong>
+        <p>Abre un ticket en nuestro Discord.</p>
+      </div>
+      <div class="card faq">
+        <strong>¿Es reembolsable?</strong>
+        <p>No. Todas las compras son finales.</p>
+      </div>
+      <div class="card faq">
+        <strong>¿Cuánto tarda la entrega?</strong>
+        <p>La entrega es inmediata.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Elix Company · Todos los derechos reservados
+  </footer>
+
+  <!-- BOTÓN FLOTANTE -->
+  <a class="discord-float" href="https://discord.gg/fUXbmXcvNT" target="_blank">💬</a>
 
 </body>
 </html>
