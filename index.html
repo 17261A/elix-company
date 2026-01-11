@@ -1,279 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elix Company</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elix Company</title>
 
-  <style>
-    :root {
-      --bg-dark: #0f1115;
-      --bg-card: #171a21;
-      --primary: #6c63ff;
-      --secondary: #8e54e9;
-      --text: #eaeaea;
-      --muted: #a0a0a0;
-    }
+<style>
+:root{
+  --bg:#0f1220;
+  --card:#171a2e;
+  --accent:#6c7cff;
+  --text:#eaeaff;
+  --muted:#b4b6ff;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+*{
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+  scroll-behavior:smooth;
+}
 
-    body {
-      background: linear-gradient(180deg, #0f1115, #121420);
-      color: var(--text);
-      line-height: 1.6;
-    }
+body{
+  margin:0;
+  background:linear-gradient(180deg,#0f1220,#121530);
+  color:var(--text);
+}
 
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
+header{
+  padding:90px 20px;
+  text-align:center;
+  animation:fadeDown 1s ease;
+}
 
-    section {
-      padding: 70px 20px;
-    }
+@keyframes fadeDown{
+  from{opacity:0; transform:translateY(-20px);}
+  to{opacity:1; transform:translateY(0);}
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-    }
+h1{font-size:3rem;margin-bottom:10px;}
 
-    /* HERO + CTA */
-    .hero {
-      text-align: center;
-      padding: 90px 20px;
-      background: linear-gradient(135deg, #14162a, #1b1e3c);
-    }
+section{
+  padding:70px 20px;
+  animation:fadeUp 1s ease;
+}
 
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-    }
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
 
-    .hero p {
-      color: var(--muted);
-      margin-bottom: 30px;
-    }
+.container{max-width:1100px;margin:auto;}
 
-    .btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 14px 30px;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+h2{text-align:center;margin-bottom:40px;}
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(108,99,255,0.4);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
 
-    /* SECCIONES */
-    h2 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:18px;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
 
-    .card {
-      background: var(--bg-card);
-      border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 25px;
-      transition: transform 0.2s ease;
-    }
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(0,0,0,.4);
+}
 
-    .card:hover {
-      transform: translateY(-4px);
-    }
+a{color:var(--accent);text-decoration:none;}
 
-    /* COMPRAS */
-    .price {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin: 10px 0;
-    }
+.cta{
+  display:inline-block;
+  padding:14px 32px;
+  background:var(--accent);
+  color:#fff;
+  border-radius:30px;
+  font-weight:bold;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
 
-    .trust {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 15px;
-    }
+.cta:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(108,124,255,.4);
+}
 
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+footer{
+  text-align:center;
+  padding:25px;
+  opacity:.7;
+}
 
-    /* FAQ */
-    .faq p {
-      color: var(--muted);
-    }
+/* Idioma */
+.lang-switch{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:var(--card);
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  z-index:999;
+}
 
-<!-- TERMINOS Y CONDICIONES -->
-<section id="terminos">
-  <div class="container">
-    <h2>Términos y Condiciones</h2>
-    <div class="card" style="font-size:0.95rem;color:var(--muted);">
-      <p>
-        Al realizar una compra en Elix Company, aceptas los siguientes términos:
-      </p>
-      <br>
-      <p>• Todas las compras son <strong>finales y no reembolsables</strong>.</p>
-      <p>• La entrega de los productos es <strong>inmediata</strong> tras confirmar el pago.</p>
-      <p>• Las compras se realizan únicamente mediante <strong>tickets en Discord</strong>.</p>
-      <p>• El uso indebido de beneficios puede resultar en la retirada del producto.</p>
-      <p>• Elix Company se reserva el derecho de modificar estos términos sin previo aviso.</p>
-    </div>
-  </div>
-</section>
+/* Discord flotante */
+.discord-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  z-index:999;
+}
 
-    
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+.discord-float img{
+  width:100%;
+  border-radius:50%;
+  transition:transform .3s ease;
+}
 
-    /* BOTÓN FLOTANTE DISCORD */
-    .discord-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #5865F2;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      color: white;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-      transition: transform 0.2s ease;
-      z-index: 999;
-    }
-
-    .discord-float:hover {
-      transform: scale(1.1);
-    }
-  </style>
+.discord-float img:hover{
+  transform:scale(1.15);
+}
+</style>
 </head>
+
 <body>
 
-  <!-- HERO / CTA -->
-  <section class="hero">
-    <div class="container">
-      <h1>Elix Company</h1>
-      <p>Creando experiencias en Roblox y Minecraft</p>
-      <a class="btn" href="https://discord.gg/fUXbmXcvNT" target="_blank">
-        Únete a Elix Company
-      </a>
-    </div>
-  </section>
+<div class="lang-switch" onclick="toggleLang()">🌍 ES / EN</div>
 
-  <!-- QUIÉNES SOMOS -->
-  <section>
-    <div class="container">
-      <h2>¿Quiénes somos?</h2>
-      <div class="card">
-        <p>
-          Elix Company es una compañía de videojuegos enfocada en Roblox y Minecraft.
-          Buscamos crecer poco a poco, creando juegos y experiencias de calidad para entretener
-          a nuestra comunidad.
-        </p>
-      </div>
-    </div>
-  </section>
+<header>
+  <h1 data-es="Elix Company" data-en="Elix Company"></h1>
+  <p data-es="Creamos experiencias premium en Roblox y Minecraft."
+     data-en="We create premium experiences on Roblox and Minecraft."></p>
+  <br>
+  <a class="cta" href="https://discord.gg/fUXbmXcvNT" target="_blank"
+     data-es="Unirse al Discord"
+     data-en="Join Discord"></a>
+</header>
 
-  <!-- ENLACES -->
 <section>
-  <div class="container">
-    <h2>Enlaces Oficiales</h2>
-    <div class="card">
-      <p>💬 <a href="https://discord.gg/fUXbmXcvNT" target="_blank">Servidor de Discord</a></p>
-      <p>🕹️ <a href="https://www.roblox.com/es/communities/644144839/Elix-Company#!/about" target="_blank">Grupo de Roblox</a></p>
-      <p>🌐 Página web oficial (esta página)</p>
-    </div>
-  </div>
+<div class="container">
+<h2 data-es="¿Quiénes somos?" data-en="Who are we?"></h2>
+<div class="card">
+<p data-es="Buscamos crecer poco a poco creando juegos de calidad."
+   data-en="We aim to grow slowly while creating high-quality games."></p>
+</div>
+</div>
 </section>
 
+<section>
+<div class="container">
+<h2 data-es="Enlaces Oficiales" data-en="Official Links"></h2>
+<div class="grid">
+<div class="card">
+<h3>💬 Discord</h3>
+<a href="https://discord.gg/fUXbmXcvNT" target="_blank">discord.gg/fUXbmXcvNT</a>
+</div>
+<div class="card">
+<h3>🕹️ Roblox</h3>
+<a href="https://www.roblox.com/es/communities/644144839/Elix-Company#!/about" target="_blank">
+Roblox Group
+</a>
+</div>
+<div class="card">
+<h3>🌐 Website</h3>
+<a href="https://17261a.github.io/elix-company/" target="_blank">
+17261a.github.io/elix-company
+</a>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- COMPRAS -->
-  <section>
-    <div class="container">
-      <h2>Compras</h2>
+<section>
+<div class="container">
+<h2 data-es="Compras" data-en="Purchases"></h2>
+<div class="card">
+<p data-es="Compras solo por ticket en Discord."
+   data-en="Purchases only via Discord ticket."></p>
+<p><strong>$3 USD</strong> / 250 Robux</p>
+<a class="cta" href="https://discord.gg/fUXbmXcvNT" target="_blank"
+   data-es="Abrir ticket"
+   data-en="Open ticket"></a>
+</div>
+</div>
+</section>
 
-      <div class="card">
-        <h3>💎 Premium</h3>
-        <p class="price">$3 USD / R$ 250 RBX</p>
-        <p class="trust">🔒 Pagos vía Discord · ⚡ Entrega inmediata · 🎮 Comunidad activa</p>
-        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:10px;">
-          Antes de comprar, asegúrate de leer nuestros <a href="#terminos">Términos y Condiciones</a>.
-        </p>
-        <a class="btn" href="https://discord.gg/fUXbmXcvNT" target="_blank">
-          Comprar (Abrir ticket)
-        </a>
-      </div>
-    </div>
-  </section>
+<section id="terminos">
+<div class="container">
+<h2 data-es="Términos y Condiciones" data-en="Terms & Conditions"></h2>
+<ul>
+<li data-es="No hay reembolsos." data-en="No refunds."></li>
+<li data-es="Entrega inmediata." data-en="Instant delivery."></li>
+<li data-es="Soporte solo por Discord." data-en="Support only via Discord."></li>
+</ul>
+</div>
+</section>
 
-  <!-- MINECRAFT -->
-  <section>
-    <div class="container">
-      <h2>Minecraft</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Rangos</h3>
-          <p>Próximamente...</p>
-        </div>
-        <div class="card">
-          <h3>Kits</h3>
-          <p>Próximamente...</p>
-        </div>
-        <div class="card">
-          <h3>Ítems</h3>
-          <p>Próximamente...</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<footer>
+© 2026 Elix Company · <a href="#terminos">Terms</a>
+</footer>
 
-  <!-- FAQ -->
-  <section>
-    <div class="container">
-      <h2>FAQ</h2>
-      <div class="card faq">
-        <strong>¿Cómo hago una compra?</strong>
-        <p>Abre un ticket en nuestro Discord.</p>
-      </div>
-      <div class="card faq">
-        <strong>¿Es reembolsable?</strong>
-        <p>No. Todas las compras son finales.</p>
-      </div>
-      <div class="card faq">
-        <strong>¿Cuánto tarda la entrega?</strong>
-        <p>La entrega es inmediata.</p>
-      </div>
-    </div>
-  </section>
+<a class="discord-float" href="https://discord.gg/fUXbmXcvNT" target="_blank">
+<img src="discord.png">
+</a>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Elix Company · Todos los derechos reservados
-  </footer>
-
-  <!-- BOTÓN FLOTANTE -->
-  <a class="discord-float" href="https://discord.gg/fUXbmXcvNT" target="_blank">💬</a>
+<script>
+let lang="es";
+function toggleLang(){
+  lang = lang==="es"?"en":"es";
+  document.querySelectorAll("[data-es]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+}
+toggleLang();
+</script>
 
 </body>
 </html>
